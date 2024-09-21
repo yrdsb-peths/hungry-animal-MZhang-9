@@ -17,10 +17,17 @@ public class MyWorld extends World
         createApple();
         
     }
+    
+    public void gameOver(){
+       Label gameOverLabel = new Label("Game Over", 100);
+       addObject(gameOverLabel, 300, 200);
+    }
+    
     public void increaseScore(){
         score++;
         scoreLabel.setValue(score);
     }
+    
     public void createApple(){
         Apple apple = new Apple();
         int x = Greenfoot.getRandomNumber(600);
