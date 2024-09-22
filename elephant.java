@@ -9,7 +9,22 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class elephant extends Actor
 {
     GreenfootSound elephantSound = new GreenfootSound("elephantcub.mp3");
-    GreenfootImage idle = new GreenfootImage("
+    GreenfootImage[] idle = new GreenfootImage[8];
+    
+    public elephant()
+    {
+        for(int i = 0; i < idle.length; i++){
+            idle[i] = new GreenfootImage("images/elephant_idle/idle" + i + ".png");
+        }
+        setImage(idle[0]);
+    }
+    
+    int imageIndex = 0;
+    public void animateElephant(){
+        setImage(idle[imageIndex]);
+        imageIndex = (imageIndex + 1) % idle.length;
+    }
+    
     public void act()
     {
         if(Greenfoot.isKeyDown("left")){
@@ -19,6 +34,7 @@ public class elephant extends Actor
             move(5);
         }
         eat(); 
+        animateElephant();
     }
     public void eat(){
         if(isTouching(Apple.class)){
