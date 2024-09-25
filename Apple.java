@@ -1,32 +1,12 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+public class Apple extends Food {
 
-/**
- * Write a description of class Apple here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
-public class Apple extends Actor
-{
-    /**
-     * Act - do whatever the Apple wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    int speed = 1;
-    public void act()
-    {
-        int x = getX();
-        int y = getY() + speed;
-        setLocation(x, y);
-        MyWorld world = (MyWorld) getWorld();
-        if(getY() >= world.getHeight() - 1)
-        {
-            world.gameOver();
-            world.removeObject(this);
-        }
+    public Apple() {
+        // Automatically set image based on class name
+        speed = 1;  // Default speed for apples
     }
-    public void setSpeed(int spd)
-    {
-        speed = spd;
+
+    @Override
+    public int getScoreValue() {
+        return 1;  // Apple increases score by 1
     }
 }
